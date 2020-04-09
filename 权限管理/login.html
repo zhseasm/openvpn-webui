@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="dologin.php">
+    <input type="text" placeholder="用户名" name="username"><br><br>
+    <input type="password" placeholder="密码" name="password"><br><br>
+    <input type="text" placeholder="验证码" name="verifycode" class="captcha"><br><br>
+    <img id="captcha_img" src="captcha.php?r=<?php echo rand();?>" alt="验证码">
+    <label><a href="javascript:void(0)" rel="external nofollow" onclick="document.getElementById('captcha_img').src='captcha.php?r='+Math.random()">换一个</a> </label><br>
+    <label><input type="checkbox" name="autologin[]" value="1"/>自动登录</label><br>
+    <button type="submit">登录</button>
+</form>
+</body>
+</html>
+

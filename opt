@@ -1,0 +1,5 @@
+yum install -y openvpn-devel openvpn autoconf automake libtool libssl-dev openssl-devel
+./autogen.sh
+./configure --prefix=/usr
+make install
+./configure --with-openvpn-plugin-dir=/plugin/dir

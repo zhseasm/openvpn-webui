@@ -1,0 +1,14 @@
+/etc/opt/remi/php73.ini
+; 第一处修改
+
+; display_errors = Off
+
+display_errors = On
+
+
+
+; 第二处修改
+
+; error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT
+
+error_reporting = E_ALL | E_STRICT

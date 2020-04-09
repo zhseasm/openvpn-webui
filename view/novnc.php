@@ -1,0 +1,21 @@
+<?php
+include './header.php';
+include 'checkPermission.php';
+?>
+<div class="container-sm">
+    <div class="jumbotron jumbotron-sm " >
+        <div class="container-sm text-monospace">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+<iframe src="http://vnc.vpn.com/vnc/" class="card-body  min-vw-auto min-vh-100"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php
+include './footer.php'
+?>

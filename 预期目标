@@ -1,0 +1,154 @@
+mysql验证登录
+squlid代理
+vpn管理，新建，删除用户，重启vpn
+https
+
+
+执行需要root权限的脚本
+/etc/sudoers
+添加
+nginx ALL=NOPASSWD:/bin/bash
+
+
+session_start报错：
+chown -R root:nginx /var/opt/remi/php73/lib/php
+
+打开debug
+display_errors=On
+
+mysql配置远程连接
+https://www.cnblogs.com/wuotto/p/9682536.html
+use mysql;
+update user set host = '%' where user = 'root';
+flush privileges;
+
+
+
+
+
+
+
+
+root权限执行shell脚本
+//也许加   \$aaaa  可以避免$不能传进来
+cat >start.c <<eof
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
+int main()
+{
+uid_t uid ,euid;
+//char cmd[1024];
+//变量暂时未使用
+uid = getuid() ;
+euid = geteuid();
+
+//printf("my uid :%u\n",getuid()); //这里显示的是当前的uid 可以注释掉.
+//printf("my euid :%u\n",geteuid()); //这里显示的是当前的euid
+if(setreuid(euid, uid)) //交换这两个id
+perror("setreuid");
+//printf("after setreuid uid :%u\n",getuid());
+//printf("afer sertreuid euid :%u\n",geteuid());
+system("systemctl restart openvpn@server"); //执行脚本
+return 0;
+}
+eof
+
+gcc -o start -Wall start.c
+chmod u+s start
+
+
+
+//生成google auth
+https://blog.csdn.net/weixin_37023469/article/details/84727135
+https://github.com/zhseasm/GoogleAuthenticator
+https://github.com/zhseasm/qrcodejs
+基本用法
+<div id="qrcode"></div>
+<script type="text/javascript">
+new QRCode(document.getElementById("qrcode"), "http://jindo.dev.naver.com/collie");
+</script>
+或有一些选择
+
+<div id="qrcode"></div>
+<script type="text/javascript">
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: "http://jindo.dev.naver.com/collie",
+	width: 128,
+	height: 128,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.H
+});
+</script>
+你可以使用一些方法
+
+qrcode.clear(); // clear the code.
+qrcode.makeCode("http://naver.com"); // make another code.
+
+
+
+///
+
+//https://www.jianshu.com/p/9cd068266e04
+
+
+<?php
+
+require_once './PHPGangsta/GoogleAuthenticator.php';
+
+$ga = new PHPGangsta_GoogleAuthenticator();
+
+// 创建新的"安全密匙SecretKey"
+// 把本次的"安全密匙SecretKey" 入库,和账户关系绑定,客户端也是绑定这同一个"安全密匙SecretKey"
+// 安全密匙SecretKey 可以和手机端绑定
+$secret = $ga->createSecret();
+
+echo "安全密匙SecretKey: " . $secret . "\n\n";
+
+//第一个参数是"标识",第二个参数为"安全密匙SecretKey" 生成二维码信息
+$qrCodeUrl = $ga->getQRCodeGoogleUrl('www.xxx.com', $secret);
+
+//Google Charts接口 生成的二维码图片,方便手机端扫描绑定安全密匙SecretKey
+echo "Google Charts URL for the QR-Code: " . $qrCodeUrl . "\n\n";
+
+//////////////
+
+安全密匙SecretKey: M5X3M4PGBQRFPUTY
+
+Google Charts URL for the QR-Code: https://api.qrserver.com/v1/create-qr-code/?data=otpauth%3A%2F%2Ftotp%2Fwww.xxx.com%3Fsecret%3DM5X3M4PGBQRFPUTY&size=200x200&ecc=M
+
+
+
+/////////////
+
+<?php
+
+require_once './PHPGangsta/GoogleAuthenticator.php';
+
+$ga = new PHPGangsta_GoogleAuthenticator();
+
+// 把提交的验证码和服务端上生成的验证码做对比
+// $secret 服务端的 "安全密匙SecretKey"
+// $oneCode 手机上看到的 "一次性验证码"
+// 最后一个参数 为容差时间,这里是2 那么就是 2* 30 sec 一分钟.
+$oneCode = '371922';
+$secret = 'M5X3M4PGBQRFPUTY';
+
+$checkResult = $ga->verifyCode($secret, $oneCode, 2);
+
+
+if ($checkResult) {
+    //这里添加自定义逻辑
+    echo '匹配! OK';
+} else {
+    echo '匹配! FAILED';
+}
+
+
+
+openvpn 注释方法
+;
+#
+都可以

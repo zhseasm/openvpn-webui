@@ -1,0 +1,58 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: z
+ * Date: 2020/2/26
+ * Time: 17:49
+ */
+class NormalMysql{
+
+    private static $host="localhost";
+    private static $user="openvpn";
+    private static $password="openvpn";
+    private static $dbName="openvpn";           //数据库名
+    private static $charset="utf8";          //字符编码
+    private static $port="3306";            //端口号
+    private $conn=null;
+    function __construct(){
+        $this->conn=new mysqli(self::$host,self::$user,self::$password,self::$dbName,self::$port);
+      /*  if(!$this->conn)
+        {
+            die("数据库连接失败！".$this->conn->connect_error);
+        }else{
+            echo "连接成功！";
+        }*/
+        $this->conn->query("set names ".self::$charset);
+    }
+    //执行sql语句
+    function sql($sql){
+        $res=$this->conn->query($sql);
+
+         if(!$res)
+        {
+            //echo "数据操作失败";
+        }
+        else
+        {
+            if($this->conn->affected_rows>0)
+            {
+                return $res;
+            }
+            else
+            {
+                //echo "0行数据受影响！";
+            }
+        }
+    }
+    //返回受影响数据行数
+ function getResultNum($sql){
+        $res=$this->conn->query($sql);
+        return mysqli_num_rows($res);
+    }
+    //关闭数据库
+    public function close()
+    {
+        @mysqli_close($this->conn);
+    }
+}
+?>

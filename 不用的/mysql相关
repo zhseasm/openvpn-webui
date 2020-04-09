@@ -1,0 +1,23 @@
+mysql5.7创建用户
+ERROR 1819 (HY000): Your password does not satisfy the current policy requirements
+解决办法：
+set global validate_password_policy=0;
+set global validate_password_length=1;
+flush privileges;
+创建用户
+create database vpn;
+CREATE USER 'vpn'@'%' IDENTIFIED BY 'vpn';
+Grant ALL on *.* TO 'vpn'@'%';
+use vpn;
+ CREATE TABLE vpnuser(name char(20)NOT NULL,password char(128) default NULL,active int(10) NOT NULL DEFAULT 1,PRIMARY KEY(name));
+ insert into vpnuser (name,password) values('ipad',password('ipad'));
+
+安装saslauthd
+yum install cyrus-sasl-2.1.26-23.el7.x86_64
+安装pam_mysql
+rpm -Uvh http://repo.iotti.biz/CentOS/7/x86_64/pam_mysql-0.8.1-0.22.el7.lux.x86_64.rpm
+
+https://blog.csdn.net/qpzkobe/article/details/102833458
+
+
+

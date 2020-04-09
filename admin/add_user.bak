@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+####adduser同时进行客户端配置文件修改，比如连接服务端哪个网卡的ip
+if [[ -e /etc/openvpn/client/sample.ovpn ]];then
+set -e
+OVPN_USER_KEYS_DIR=/etc/openvpn/client/keys
+EASY_RSA_DIR=/etc/openvpn/easy-rsa/
+PKI_DIR=$EASY_RSA_DIR/pki
+else
+cd /etc/openvpn/client/
+cat >sample.ovpn<<eof
+# 指定这是一个客户端，我们将从服务器获取某些配置文件指令
+client
+# 在大多数系统中，除非你部分禁用或者完全禁用了TUN/TAP接口的防火墙，否则VPN将不起作用
+dev tun
+# 指定连接的服务器是采用TCP还是UDP协议，这里需要使用与服务器端相同的设置
+proto udp
+# 指定服务器的主机名(或IP)以及端口号，如果有多个VPN服务器，为了实现负载均衡，你可以设置多个remote指令
+#remote my-server-1 21198;
+###这里需要服务器地址、端口
+remote 192.168.1.121 1194
+# 启用该指令，与服务器连接中断后将自动重新连接，这在网络不稳定的情况下(例如：笔记本电脑无线网络)非常有用
+resolv-retry infinite
+# 大多数客户端不需要绑定本机特定的端口号
+nobind
+# 持久化选项可以尽量避免访问在重启时由于用户权限降低而无法访问的某些资源
+persist-key
+persist-tun
+remote-cert-tls server
+# 启用允许数据压缩，服务端配置文件也需要有这项
+comp-lzo
+# 指定日志文件的记录详细级别，可选0-9，等级越高日志内容越详细
+verb 3
+auth-nocache
+script-security 3
+ca ca.crt
+cert admin.crt
+key admin.key
+tls-crypt ta.key 1
+eof
+fi
+for user in "$@"
+do
+  #if [ -d "$OVPN_USER_KEYS_DIR/$user" ]; then
+   #rm -rf  $PKI_DIR/reqs/$user.req
+    #sed -i '/'"$user"'/d' $PKI_DIR/index.txt
+  #fi
+  if [ -d "$OVPN_USER_KEYS_DIR/$user" ];then
+  echo "用户已经存在"
+  exit 0
+  fi
+  cd $EASY_RSA_DIR
+  # 生成客户端 ssl 证书文件
+  ./easyrsa build-client-full $user nopass
+  # 整理下生成的文件s
+  mkdir -p  $OVPN_USER_KEYS_DIR/$user
+  cp $PKI_DIR/ca.crt $OVPN_USER_KEYS_DIR/$user/   # CA 根证书
+  cp $PKI_DIR/issued/$user.crt $OVPN_USER_KEYS_DIR/$user/   # 客户端证书
+  cp $PKI_DIR/private/$user.key $OVPN_USER_KEYS_DIR/$user/  # 客户端证书密钥
+  cp /etc/openvpn/client/sample.ovpn $OVPN_USER_KEYS_DIR/$user/$user.ovpn # 客户端配置文件
+  sed -i 's/admin/'"$user"'/g' $OVPN_USER_KEYS_DIR/$user/$user.ovpn
+  cp /etc/openvpn/server/certs/ta.key $OVPN_USER_KEYS_DIR/$user/ta.key  # auth-tls 文件
+  cd $OVPN_USER_KEYS_DIR
+  zip -r $user.zip $user
+  mv $user.zip $user
+done
+exit 0

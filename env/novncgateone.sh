@@ -110,8 +110,8 @@ WantedBy=multi-user.target
 eof
 
 #换python源
-pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 pip install pip -U
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 #gateone
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple tornado==4.0

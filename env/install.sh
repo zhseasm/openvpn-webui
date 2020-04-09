@@ -5,7 +5,7 @@ stty erase '^H'
 function installopenvpn() {
 echo "正在开始安装openvpn"
 yum -y install epel-release
-yum -y install openvpn easy-rsa iptables-services.x86_64 zip unzip net-tools-2.0-0.25.20131004git.el7.x86_64 python python2-pip lsof
+yum -y install openvpn easy-rsa  zip unzip net-tools-2.0-0.25.20131004git.el7.x86_64 python python2-pip lsof
 pip install lolcat
 mkdir -p /etc/openvpn/easy-rsa/
 cp -a /usr/share/easy-rsa/3/* /etc/openvpn/easy-rsa
@@ -132,6 +132,8 @@ cat >/etc/openvpn/management-pass<<eof
 passwd
 ##密码
 eof
+systemctl start openvpn@server
+systemctl enable openvpn@server
 echo 已经安装好了openvpn
 checkiptables
 exit 0
@@ -207,7 +209,7 @@ fi
 echo ""
 echo "iptables-service没有启动，是否启动"
 echo ""
-read -p"是否重新安装:y/n:" restartip
+read -p"是否启动:y/n:" restartip
 if [[ $restartip == "n" ]];then
 exit 0
 elif [ $restartip == "y" ];then

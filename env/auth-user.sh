@@ -32,7 +32,17 @@ $mysqladd "CREATE TABLE openvpn.vpnuser(name char(20)NOT NULL,password char(128)
 $mysqladd "CREATE USER 'openvpn'@'%' IDENTIFIED BY 'openvpn';"
 #$mysqladd "Grant ALL on *.* TO 'openvpn'@'%';"
 $mysqladd "Grant ALL on  openvpn.vpnuser TO 'openvpn'@'%';"
+length=$(grep "validate_password_length=4" /etc/my.cnf)
 
+if [[ ! $length ]];then
+echo "validate_password_length=4" >>/etc/my.cnf
+fi
+pass=$(grep "validate_password_policy=0" /etc/my.cnf)
+if [[ ! $pass ]];then
+echo "validate_password_policy=0" >>/etc/my.cnf
+fi
+
+systemctl restart mysqld
 #创建用户
 #insert into vpnuser(name,password)values('zzzz',password('zzzz'));
 #openvpn部分

@@ -37,6 +37,7 @@ mkdir -p /var/log/openvpn/
 chown openvpn:openvpn /var/log/openvpn
 cd /etc/openvpn/
 mkdir -p /etc/openvpn/ccd
+chown -R openvpn:nginx /etc/openvpn/client/
 cat >/etc/openvpn/server.conf<<eof
 ;监听的端口号 //需要
 port 1194
@@ -163,7 +164,7 @@ iptables -I INPUT 1 -i $NIC -p $PROTOCOL --dport $PORT -j ACCEPT
 #iptables -I INPUT -p udp --dport 53 -j ACCEPT
 #iptables -A INPUT -i ens33 -s 192.168.100.10 -j ACCEPT
 iptables -L -t nat
-iptables-save > /etc/sysconfig/iptables
+#iptables-save > /etc/sysconfig/iptables
 forward=$(grep "net.ipv4.ip_forward = 1*" /etc/sysctl.conf )
 if [[ $forward == "net.ipv4.ip_forward = 1" ]];then
 exit 0

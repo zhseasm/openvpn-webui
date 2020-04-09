@@ -1,6 +1,6 @@
 <?php
 $users= array();
-exec('/bin/ls /etc/openvpn/client/keys/', $users);
+exec('/usr/bin/ls /etc/openvpn/client/keys/', $users);
 ?>
 
 <?php include './header.php';

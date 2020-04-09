@@ -1,4 +1,3 @@
-
 <?php
 $users= array();
 exec('/bin/ls /etc/openvpn/client/keys/', $users);

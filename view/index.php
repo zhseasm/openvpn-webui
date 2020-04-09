@@ -34,10 +34,10 @@ while ($line = fgets($fh)) {
 }*/
 $mem=shell_exec('cat /proc/meminfo |grep MemTotal|awk \'{print $2}\'');
 /*$mem=ceil(intval($mem) / 1024);*/
-$mem=ceil($mem / 1024);
+(int)$mem=ceil($mem / 1024);
 /*var_dump($mem);*/
 $memfree=shell_exec('cat /proc/meminfo |grep MemFree|awk \'{print $2}\'');
-$memfree=ceil($memfree / 1024);
+(int)$memfree=ceil($memfree / 1024);
 /*var_dump($memfree);*/
 $memused = $mem - $memfree;
 /*var_dump($memused);*/

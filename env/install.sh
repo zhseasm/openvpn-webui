@@ -177,7 +177,7 @@ fi
 chown -R nginx:nginx /etc/openvpn/
 systemctl restart openvpn@server
 systemctl enable openvpn@server
-hostanmectl set-hostname OpenVpn
+hostnamectl set-hostname OpenVpn
 ##wget https://raw.githubusercontent.com/Angristan/openvpn-install/master/openvpn-install.sh -O centos7-vpn.sh
 exit 0
 }

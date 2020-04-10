@@ -12,3 +12,4 @@ if [[ -e /etc/openvpn/client/sample.ovpn ]];then
 
 sed -i -e 's/'"$OLDPROTOCOL"'/'"proto $PROTOCOL"/'g' /etc/openvpn/client/sample.ovpn
 
+fi

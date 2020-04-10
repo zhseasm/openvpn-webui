@@ -117,6 +117,8 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple tornado==4.0
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple gateone
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple numpy
+status=$(grep "\"ODA4ZmNlNWFlZTBmNDM1ZmFkOGNlOWM3MTBlY2FiMGU4N\":\"YzZhOTljMjczNjIzNDAyOThmZDliMjQ3M2QxM2Y1NDgyM\"" /etc/gateone/conf.d/30api_keys.conf)
+if [[ ! $status ]];then
 gateone --new_api_key
 apikeys=$(cat -n /etc/gateone/conf.d/30api_keys.conf|grep "api"|awk '{print$1}')
 apikeys=$(($apikeys+1))
@@ -128,6 +130,7 @@ sed -i  "s/\"auth\": \"none\",/\"auth\":\"api\",/g" /etc/gateone/conf.d/20authen
 ###gateone换8443端口
 sed  -i "s/\"port\": 443/\"port\": 8443/g" /etc/gateone/conf.d/10server.conf
 echo gateonedone
+fi
 ##自启
 systemctl restart gateone
 systemctl restart x11vnc

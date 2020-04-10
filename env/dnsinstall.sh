@@ -107,4 +107,5 @@ eof
 cd /var/named/
 chown root:named named*
 systemctl restart named
+systemctl enable named
 exit 0

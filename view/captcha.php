@@ -23,7 +23,7 @@ if ( $type!='gif' && function_exists('imagecreatetruecolor')) {
 $bg_color = imagecolorallocate($img, 255,255,255);//背景颜色
 @imagefilledrectangle($img, 0, 0, $width - 1, $height - 1, $bg_color);//填充背景
 
-$code_Color = imagecolorallocate($img,0,0,0);//字符颜色
+$code_Color = imagecolorallocate($img,random_int(0,255),random_int(0,255),random_int(0,255));//字符颜色
 //@imagestring($img, 5, 5, 3, $code, $code_color);
 for($i=0;$i<$code_len;$i++){
     imagettftext($img,mt_rand(25,30),mt_rand(-45,45),30*$i+10,mt_rand(30,35),$code_Color,$font,substr($code,$i,1));

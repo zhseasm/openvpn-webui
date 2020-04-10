@@ -3,7 +3,7 @@ include './header.php';
 include 'checkPermission.php';
 //var_dump($_SERVER['SERVER_ADDR']);
 $SERVER=$_SERVER['SERVER_ADDR'];
-shell_exec("sudo bash /var/www/html/env/novnc.sh -n $SERVER");
+echo shell_exec("sudo bash /var/www/html/env/novnc.sh -n $SERVER");
 ?>
 <div class="container-sm">
     <div class="jumbotron jumbotron-sm " >
@@ -11,7 +11,7 @@ shell_exec("sudo bash /var/www/html/env/novnc.sh -n $SERVER");
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card">
-<iframe src="http://vnc.vpn.com/vnc/" class="card-body  min-vw-auto min-vh-100"></iframe>
+<iframe src="https://vnc.vpn.com/vnc/" class="card-body  min-vw-auto min-vh-100"></iframe>
                         </div>
                     </div>
                 </div>

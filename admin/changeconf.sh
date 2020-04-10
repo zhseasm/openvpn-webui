@@ -282,4 +282,5 @@ echo "Script: $SCRIPT"
 echo "LZO Compression: $LZO"
 sudo bash /var/www/html/admin/add-openvpn-rules.sh
 sudo bash /var/www/html/admin/restart.sh
+/usr/sbin/iptables-save > /etc/sysconfig/iptables
 exit 0

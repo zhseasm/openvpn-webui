@@ -166,7 +166,7 @@ iptables -I INPUT 1 -i $NIC -p $PROTOCOL --dport $PORT -j ACCEPT
 #iptables -I INPUT -p udp --dport 53 -j ACCEPT
 #iptables -A INPUT -i ens33 -s 192.168.100.10 -j ACCEPT
 iptables -L -t nat
-#iptables-save > /etc/sysconfig/iptables
+/usr/sbin/iptables-save > /etc/sysconfig/iptables
 forward=$(grep "net.ipv4.ip_forward = 1*" /etc/sysctl.conf )
 if [[ $forward == "net.ipv4.ip_forward = 1" ]];then
 exit 0

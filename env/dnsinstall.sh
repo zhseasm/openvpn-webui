@@ -108,4 +108,5 @@ cd /var/named/
 chown root:named named*
 systemctl restart named
 systemctl enable named
+/usr/sbin/iptables-save > /etc/sysconfig/iptables
 exit 0

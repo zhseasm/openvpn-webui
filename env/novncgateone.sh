@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 ###sshkey
 host=$(hostname)
-ssh-keygen -f $host
+ssh-keygen -f ~/.ssh/$host
 ssh-copy-id -f -i ~/.ssh/$host root@localhost
 sed -i "s/users/$host/g" /etc/gateone/conf.d/10server.conf
 mkdir -p /var/lib/gateone/$host/$host/.ssh
@@ -124,6 +124,7 @@ api=$(sed -n "$apikeysm$apikeys p" /etc/gateone/conf.d/30api_keys.conf |cut -d "
 sed -i "s/$api/\"ODA4ZmNlNWFlZTBmNDM1ZmFkOGNlOWM3MTBlY2FiMGU4N\"/g" /etc/gateone/conf.d/30api_keys.conf
 secret=$(sed -n "$apikeysm$apikeys p" /etc/gateone/conf.d/30api_keys.conf |cut -d ":" -f 2)
 sed -i "s/$secret/\"YzZhOTljMjczNjIzNDAyOThmZDliMjQ3M2QxM2Y1NDgyM\"/g" /etc/gateone/conf.d/30api_keys.conf
+sed -i  "s/\"auth\": \"none\",/\"auth\":\"api\",/g" /etc/gateone/conf.d/20authentication.conf
 ###gateone换8443端口
 sed  -i "s/\"port\": 443/\"port\": 8443/g" /etc/gateone/conf.d/10server.conf
 echo gateonedone
@@ -134,5 +135,6 @@ systemctl restart novnc
 systemctl enable gateone
 systemctl enable x11vnc
 systemctl enable novnc
+/usr/sbin/iptables-save > /etc/sysconfig/iptables
 reboot
 https://192.168.31.135:6080/vnc.html?host=192.168.31.135&port=6080

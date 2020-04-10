@@ -208,5 +208,6 @@ eof
 chmod a+x /etc/openvpn/checkpsw.sh
 touch /etc/openvpn/psw-file
 chmod 644 /etc/openvpn/psw-file
+/usr/sbin/iptables-save > /etc/sysconfig/iptables
 echo done
 exit 0

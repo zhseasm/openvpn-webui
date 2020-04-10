@@ -1,4 +1,4 @@
-# openvpn-web
+# openvpn-webui
 #openvpn的日志文件在/var/log/openvpn/  
 
 #shell脚本认证的日志文件在/var/log/openvpn-password.log

@@ -150,7 +150,7 @@ sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 yum install -y iptables-services
 systemctl enable iptables
 systemctl start iptables
-iptables -F
+/usr/sbin/iptables -F
 NIC=$(ip -4 route ls | grep default | grep -Po '(?<=dev )(\S+)' | head -1)
 PORT=$(grep '^port ' /etc/openvpn/server.conf | cut -d " " -f 2)
 PROTOCOL=$(grep '^proto' /etc/openvpn/server.conf |cut -d " " -f 2)

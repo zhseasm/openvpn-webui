@@ -10,7 +10,7 @@ iptables -I INPUT 1 -i tun0 -j ACCEPT
 iptables -I FORWARD 1 -i $NIC -o tun0 -j ACCEPT
 iptables -I FORWARD 1 -i tun0 -o $NIC -j ACCEPT
 iptables -I INPUT 1 -i $NIC -p $PROTOCOL --dport $PORT -j ACCEPT
-#iptables-save > /etc/sysconfig/iptables
+/usr/sbin/iptables-save > /etc/sysconfig/iptables
 systemctl restart iptables
 echo 防火墙规则已刷新
 exit 0

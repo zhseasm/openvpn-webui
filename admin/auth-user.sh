@@ -150,6 +150,7 @@ yum install -y openvpn-devel openvpn autoconf automake libtool libssl-dev openss
 ./configure --prefix=/usr
 make install
 ./configure --with-openvpn-plugin-dir=/plugin/dir
+mkdir -p /etc/openvpn/
 touch /etc/openvpn/auth/otp-secrets
 #script
 cat >/etc/openvpn/checkpsw.sh<<eof

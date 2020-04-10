@@ -97,8 +97,6 @@ comp-lzo
 # 指定日志文件的记录详细级别，可选0-9，等级越高日志内容越详细
 verb 3
 auth-nocache
-;auth-user-pass
-;static-challenge "Enter Google Authenticator Token" 1
 script-security 3
 eof
 fi

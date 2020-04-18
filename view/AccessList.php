@@ -9,7 +9,7 @@
             echo $v."<br>";
         }
     }
-    include './header.php';
+include './header.php';
 include './checkPermission.php';
  ?>
 

@@ -84,14 +84,14 @@ http {
     # See http://nginx.org/en/docs/ngx_core_module.html#include
     # for more information.
     include /etc/nginx/conf.d/*.conf;
-
+    fastcgi_intercept_errors on;
     server {
         listen       80 default_server;
         #listen       [::]:80 default_server;
         server_name _;
         root         /var/www/html/view;
         index index.php index.html index.htm; #此处为新增
-
+        error_page 404 = /404.php;
 
 
 listen 443 ssl;

@@ -16,5 +16,5 @@ unset($_SESSION['password']);
 setcookie("username","",time()-1);  //清空cookie
 setcookie("password","",time()-1);
 session_destroy();
-header("location: dologin.php ");
+header("location: index.php ");
 ?>

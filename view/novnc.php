@@ -1,6 +1,6 @@
 <?php
 include './header.php';
-include 'checkPermission.php';
+include './checkPermission.php';
 //var_dump($_SERVER['SERVER_ADDR']);
 //var_dump($_SERVER);
 $SERVER=$_SERVER['SERVER_ADDR'];

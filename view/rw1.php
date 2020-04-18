@@ -1,6 +1,7 @@
 
 <?php
 include "./header.php";
+include "./checkPermission.php";
 $port=shell_exec('grep "port" /etc/openvpn/server.conf|awk \'{print$2}\'');
 $ip=shell_exec('/usr/sbin/ip addr |grep "inet " |grep -v " lo"|grep -v "tun0"|awk \'{print$2}\'|sed "s/\/24//g"|sed "s/\/16//g"|sed "s/\/8//g"');
 $ip=trim($ip);

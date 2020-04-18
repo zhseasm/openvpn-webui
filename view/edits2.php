@@ -7,6 +7,7 @@ $netmask = $_GET['netmask'];
 /*var_dump($clientname);
 var_dump($subnet);
 var_dump($netmask);*/
+include "./checkPermission.php";
 ?>
 <div class="container-sm">
     <div class="jumbotron jumbotron-sm font-weight-light text-wrap" style="font-size:12px;">
@@ -18,6 +19,7 @@ var_dump($netmask);*/
 
 
                     <?php
+                        echo "<meta http-equiv=\"refresh\" content=\"2;url=userdetail.php?username=$clientname;\">";
                     $run = shell_exec('sudo bash /var/www/html/admin/edits2.sh -c '.$clientname.' -s '.$subnet.' -n '.$netmask.' -o /var/www/html/download');
                     $result  = shell_exec('echo '.$run.' ｜ grep "edit done"');
                     if ($result){

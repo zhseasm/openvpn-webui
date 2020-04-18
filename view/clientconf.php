@@ -2,6 +2,7 @@
 session_start();
 /*var_dump($_SESSION);*/
 include './checknormallogin.php';
+//include './checkPermission.php';
 /*var_dump($_SERVER);*/
 ?>
 <div class="container-sm">
@@ -50,6 +51,9 @@ include './checknormallogin.php';
                                                 ?>
                                                 <a href="./download.php?name=openvpn.apk" class="badge badge-sm badge-info">
                                                     安卓
+                                                </a>
+                                                <a href="./download.php?name=and-openvpn.apk" class="badge badge-sm badge-info">
+                                                    第三方安卓
                                                 </a>
                                                 <a href="https://apps.apple.com/us/app/openvpn-connect/id590379981" class="badge badge-sm badge-info">
                                                     ios

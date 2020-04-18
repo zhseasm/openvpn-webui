@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 192.168.101.121
+ Source Server         : openvpn
  Source Server Type    : MySQL
  Source Server Version : 50729
  Source Host           : 192.168.31.121:3306
@@ -11,7 +11,7 @@
  Target Server Version : 50729
  File Encoding         : 65001
 
- Date: 09/04/2020 13:32:25
+ Date: 19/04/2020 00:52:55
 */
 
 SET NAMES utf8mb4;
@@ -49,10 +49,22 @@ INSERT INTO `access` VALUES (0, 'EditAccess', '[\"\\/EditAccess.php\"]');
 INSERT INTO `access` VALUES (0, 'EditUser', '[\"\\/EditUser.php\"]');
 INSERT INTO `access` VALUES (0, 'AddUser.php', '[\"\\/rbacAddUser.php\"]');
 INSERT INTO `access` VALUES (0, 'RoleList', '[\"\\/RoleList.php\"]');
-INSERT INTO `access` VALUES (0, 'AddRole', '[\"\\/AddAccess.php\"]');
+INSERT INTO `access` VALUES (0, 'Addaccess', '[\"\\/AddAccess.php\"]');
 INSERT INTO `access` VALUES (0, 'changeconf', '[\"\\/changeconf.php\"]');
 INSERT INTO `access` VALUES (0, 'AddRole', '[\"\\/AddRole.php\"]');
 INSERT INTO `access` VALUES (0, 'initnovnc', '[\"\\/initnovnc.php\"]');
+INSERT INTO `access` VALUES (0, 'edits2', '[\"\\/edits2.php\"]');
+INSERT INTO `access` VALUES (0, 'openvpn', '[\"\\/openvpn.php\"]');
+INSERT INTO `access` VALUES (0, 'adduser', '[\"\\/adduser.php\"]');
+INSERT INTO `access` VALUES (0, 'adduser', '[\"\\/adduser.php\"]');
+INSERT INTO `access` VALUES (0, 'rw1', '[\"\\/rw1.php\"]');
+INSERT INTO `access` VALUES (0, 'rw2', '[\"\\/rw2.php\"]');
+INSERT INTO `access` VALUES (0, 'rwremove', '[\"\\/rwremove.php\"]');
+INSERT INTO `access` VALUES (0, 's2remove', '[\"\\/s2remove.php\"]');
+INSERT INTO `access` VALUES (0, 's2s', '[\"\\/s2s.php\"]');
+INSERT INTO `access` VALUES (0, 's2s2', '[\"\\/s2s.php\"]');
+INSERT INTO `access` VALUES (0, 'updateclinet', '[\"\\/updateclient.php\"]');
+INSERT INTO `access` VALUES (0, 'upload', '[\"\\/upload.php\"]');
 
 -- ----------------------------
 -- Table structure for role
@@ -98,9 +110,7 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (2, 'hah', '*AFCEA13BC53646FC950B67F9D10A5C2C0CB37F3D', 1);
 INSERT INTO `user` VALUES (1, 'admin', '*70AE3EE89F8BC347D0169983182F30A57EFF1CA1', 1);
-INSERT INTO `user` VALUES (3, 'zzz', '*082DE821DF09B1B5009D12B8EE5CC26E81193247', 1);
 
 -- ----------------------------
 -- Table structure for user_role

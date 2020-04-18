@@ -1,4 +1,6 @@
-<?php include './header.php';?>
+<?php include './header.php';
+include "./checkPermission.php";
+?>
 <div class="container-sm">
     <div class="jumbotron jumbotron-sm font-weight-light text-wrap" style="font-size:12px;">
         <div class="row">

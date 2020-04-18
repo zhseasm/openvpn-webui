@@ -13,6 +13,7 @@ var_dump($network[0]);
 echo '<hr/>';
 var_dump($network[1]);
 var_dump($pass);*/
+include "./checkPermission.php";
 ?>
 <div class="container-sm">
     <div class="jumbotron jumbotron-sm font-weight-light text-wrap" style="font-size:12px;">

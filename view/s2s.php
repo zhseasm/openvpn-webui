@@ -4,6 +4,7 @@ include './header.php';
 $ip=shell_exec('/usr/sbin/ip addr |grep "inet " |grep -v " lo"|grep -v "tun0"|awk \'{print$2}\'|sed "s/\/24//g"|sed "s/\/16//g"|sed "s/\/8//g"');
 $ip=trim($ip);
 $ip=str_replace("\n",'或',$ip);
+include "./checkPermission.php";
 ?>
 
 <div class="container-sm">

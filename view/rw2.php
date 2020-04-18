@@ -5,7 +5,7 @@ $clientname = $_GET['clientname'];
 $serverurl = $_GET['server'];
 /*$port=$_GET['port'];*/
 $pass=$_GET['password'];
-
+include "./checkPermission.php";
 ?>
 
 <div class="container-sm">

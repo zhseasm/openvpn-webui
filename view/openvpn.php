@@ -1,5 +1,6 @@
 <?php
 include './header.php';
+include "./checkPermission.php";
 echo "<meta http-equiv=\"Refresh\" content=\"1;url=./index.php\" />";
 switch ($_GET[xh]) {
     case '0';

@@ -1,6 +1,7 @@
 <?php
 $users= array();
 exec('/usr/bin/ls /etc/openvpn/client/keys/', $users);
+//var_dump($users);
 ?>
 
 <?php include './header.php';

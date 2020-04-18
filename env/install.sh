@@ -134,6 +134,8 @@ passwd
 eof
 systemctl start openvpn@server
 systemctl enable openvpn@server
+chown -R root:nginx /var/log/openvpn/*
+chmod -R 755 /var/log/openvpn/*
 echo 已经安装好了openvpn
 checkiptables
 exit 0

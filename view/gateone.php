@@ -1,9 +1,12 @@
 <!-- Include gateone.js somewhere on your page -->
 <script src="./js/gateone.js"></script>
+<script src="<?='https://'.$_SERVER['SERVER_ADDR'].':8443/static/gateone.js'?>"></script>
 
 <?php
 include './header.php';
 include './checkPermission.php';
+//var_dump('https://'.$_SERVER['SERVER_ADDR'].':8443/static/gateone.js');
+
 $gateone_owner =gethostname();
 $secret = "YzZhOTljMjczNjIzNDAyOThmZDliMjQ3M2QxM2Y1NDgyM";
 $authobj = array(

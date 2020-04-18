@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 cd /var/www/html
 git clone https://github.com/zhseasm/openvpn-webui.git
 mv openvpn-web/* .

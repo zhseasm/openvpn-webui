@@ -110,6 +110,7 @@ WantedBy=multi-user.target
 eof
 
 #换python源
+yum install python2-pip.noarch -y
 pip install pip -U
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 #gateone

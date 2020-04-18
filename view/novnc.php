@@ -21,11 +21,11 @@ $SERVER=$_SERVER['SERVER_ADDR'];
                     }
                     else
                     {
-                        echo "<span><a href=\"https://$SERVER:6080/vnc.html \" target='_blank' class=\"badge badge-info badge-sm\">请初始化novnc</a></span>";
+                        echo "<span><a href=\"https://$SERVER:6080/vnc.html \" target='_blank' class=\"badge badge-info badge-sm\">请初始化novnc或者全屏</a></span>";
                     }
 
                       ?>
-<iframe src="https://192.168.31.121:6080/vnc.html" class="card-body  min-vw-auto min-vh-100">
+<iframe src="https://127.0.0.1" class="card-body  min-vw-auto min-vh-100">
 <!--    <script>document.write()
         }</script>-->
     <iframe>

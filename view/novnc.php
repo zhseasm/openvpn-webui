@@ -5,6 +5,7 @@ include 'checkPermission.php';
 $SERVER=$_SERVER['SERVER_ADDR'];
 shell_exec("sudo bash /var/www/html/env/novnc.sh -n $SERVER");
 ?>
+<a href="https://<?$_SERVER['SERVER_ADDR'].':6080'?>"></a>
 <div class="container-sm">
     <div class="jumbotron jumbotron-sm " >
         <div class="container-sm text-monospace">

@@ -187,6 +187,12 @@ systemctl restart mysqld
 sleep 1
 firewall-cmd --permanent --zone=public --add-port=80/tcp
 systemctl restart firewalld
+##key
+mkdir -p /etc/nginx/key
+cd /etc/nginx/key/
+openssl genrsa -out ssl.pem 4096
+openssl req -new -key ssl.pem -out ssl.csr
+openssl x509 -req -in ssl.csr -out ssl.crt -signkey ssl.pem -CAcreateserial -days 3650
 echo -e "\033[1m\n          lnmp环境已经安装好\n可以通过http://ip地址/phpinfo.php 来访问你的phpinfo \n           mysql密码为toor\n"
 
 exit 0

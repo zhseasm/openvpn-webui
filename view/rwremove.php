@@ -3,7 +3,7 @@
 $clientname = $_GET['clientname'];
 include './header.php';
 include "./checkPermission.php";
-echo "<meta http-equiv=\"Refresh\" content=\"1;url=./index.php\" />";
+echo "<meta http-equiv=\"Refresh\" content=\"1;url=user.php\" />";
 ?>
 <div class="container-sm">
     <div class="jumbotron jumbotron-sm font-weight-light text-wrap" style="font-size:12px;">

@@ -52,6 +52,7 @@ INSERT INTO `access` VALUES (0, 'RoleList', '[\"\\/RoleList.php\"]');
 INSERT INTO `access` VALUES (0, 'AddRole', '[\"\\/AddAccess.php\"]');
 INSERT INTO `access` VALUES (0, 'changeconf', '[\"\\/changeconf.php\"]');
 INSERT INTO `access` VALUES (0, 'AddRole', '[\"\\/AddRole.php\"]');
+INSERT INTO `access` VALUES (0, 'initnovnc', '[\"\\/initnovnc.php\"]');
 
 -- ----------------------------
 -- Table structure for role

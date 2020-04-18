@@ -6,7 +6,7 @@
 include './header.php';
 include './checkPermission.php';
 //var_dump('https://'.$_SERVER['SERVER_ADDR'].':8443/static/gateone.js');
-
+$SERVER=$_SERVER['SERVER_ADDR'];
 $gateone_owner =gethostname();
 $secret = "YzZhOTljMjczNjIzNDAyOThmZDliMjQ3M2QxM2Y1NDgyM";
 $authobj = array(
@@ -36,7 +36,9 @@ $valid_json_auth_object = json_encode($authobj);
                     <div class="card">
                         <div class="card-body" id="gateone_container" style="height: 480px;">
 <!-- Decide where you want to put Gate One -->
-
+<?php
+echo "<span><a href=\"https://$SERVER:8443/static/gateone.js\" target='_blank' class=\"badge badge-info badge-sm\">请初始化gateone</a></span>";
+?>
     <div id="gateone">
     </div>
                        </div>

@@ -21,10 +21,10 @@ shift # past argument or value
 done
 
 if [[ $NOVNC ]];then
-nnovnc=$(grep "https://vnc.vpn.com/vnc/" /var/www/html/view/novnc.php)
+nnovnc=$(grep "https://127.0.0.1" /var/www/html/view/novnc.php)
 
 if [[ $nnovnc ]];then
-sed -i "s/vnc.vpn.com\/vnc\//$NOVNC:6080\/vnc.html/g" /var/www/html/view/novnc.php
+sed -i "s/127.0.0.1/$NOVNC:6080\/vnc.html/g" /var/www/html/view/novnc.php
 fi
 fi
 echo done

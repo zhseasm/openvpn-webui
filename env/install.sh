@@ -172,7 +172,7 @@ iptables -L -t nat
 forward=$(grep "net.ipv4.ip_forward = 1*" /etc/sysctl.conf )
 if [[ $forward == "net.ipv4.ip_forward = 1" ]];then
 exit 0
-esle
+else
 echo net.ipv4.ip_forward = 1 >> /etc/sysctl.conf
 sysctl -p
 fi

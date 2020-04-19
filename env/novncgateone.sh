@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+yum install -y epel-release
 ###novnc x11vnc
 yum install -y novnc x11vnc
 yum groupinstall -y "X window System"

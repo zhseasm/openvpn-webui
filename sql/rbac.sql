@@ -11,7 +11,7 @@
  Target Server Version : 50729
  File Encoding         : 65001
 
- Date: 19/04/2020 00:52:55
+ Date: 20/04/2020 12:22:20
 */
 
 SET NAMES utf8mb4;
@@ -110,7 +110,7 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'admin', '*70AE3EE89F8BC347D0169983182F30A57EFF1CA1', 1);
+INSERT INTO `user` VALUES (0, 'admin', '*70AE3EE89F8BC347D0169983182F30A57EFF1CA1', 1);
 
 -- ----------------------------
 -- Table structure for user_role
@@ -125,8 +125,6 @@ CREATE TABLE `user_role`  (
 -- ----------------------------
 -- Records of user_role
 -- ----------------------------
-INSERT INTO `user_role` VALUES (0, 1, 0);
-INSERT INTO `user_role` VALUES (0, 2, 0);
-INSERT INTO `user_role` VALUES (0, 3, 0);
+INSERT INTO `user_role` VALUES (0, 0, 0);
 
 SET FOREIGN_KEY_CHECKS = 1;

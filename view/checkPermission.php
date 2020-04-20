@@ -46,7 +46,7 @@
      $_SESSION['user_name']="abc";*/
    /*  echo $_SESSION['user_id'];*/
     //因为重点不是验证登录，所以这里简单的验证登录
-    if( $_SESSION['user_id'] && $_SESSION['username'] ){
+    if( isset($_SESSION['user_id']) && isset($_SESSION['username']) ){
         $pdo = new PDO("mysql:host=127.0.0.1;dbname=rbac","root","toor");
         $stmt = $pdo->prepare("select count(*) from user where user_id=:user_id and user_name=:user_name;");
         $stmt->execute(array(":user_id"=>$_SESSION['user_id'],":user_name"=>$_SESSION['username']));
@@ -71,9 +71,13 @@
         }
 
  
-    }else
+    }
+    else
     {
         include "error.php";
+        //var_dump($_SESSION);
+        //var_dump($_SERVER['SCRIPT_NAME']);
+        //var_dump($urls);
         exit;
     }
 

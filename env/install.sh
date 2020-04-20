@@ -33,8 +33,6 @@ cp /etc/openvpn/easy-rsa/pki/ca.crt ./
 cp /etc/openvpn/easy-rsa/pki/issued/server.crt ./
 cp /etc/openvpn/easy-rsa/pki/private/server.key ./
 cp /etc/openvpn/easy-rsa/ta.key ./
-mkdir -p /var/log/openvpn/
-chown openvpn:openvpn /var/log/openvpn
 cd /etc/openvpn/
 mkdir -p /etc/openvpn/ccd
 chown -R openvpn:nginx /etc/openvpn/client/
@@ -132,6 +130,8 @@ cat >/etc/openvpn/management-pass<<eof
 passwd
 ##密码
 eof
+mkdir -p /var/log/openvpn/
+chown openvpn:openvpn /var/log/openvpn
 systemctl start openvpn@server
 systemctl enable openvpn@server
 chown -R root:nginx /var/log/openvpn/*

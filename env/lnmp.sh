@@ -24,7 +24,11 @@ yum install -y yum-utils
 yum install -y php73-php-fpm php73-php-cli php73-php-bcmath php73-php-gd php73-php-json php73-php-mbstring php73-php-mcrypt php73-php-mysqlnd php73-php-opcache php73-php-pdo php73-php-pecl-crypto php73-php-pecl-mcrypt php73-php-pecl-geoip php73-php-recode php73-php-snmp php73-php-soap php73-php-xml
 
 ####mysql
-rpm -Uvh http://repo.mysql.com/mysql57-community-release-el7-8.noarch.rpm
+
+#mysql57-community-release-el7.rpm
+#https://repo.mysql.com/mysql57-community-release-el7.rpm
+#rpm -Uvh http://repo.mysql.com/mysql57-community-release-el7-8.noarch.rpm
+rpm -Uvh https://repo.mysql.com/mysql57-community-release-el7.rpm
 yum install -y mysql mysql-server
 
 

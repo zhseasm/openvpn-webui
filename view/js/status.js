@@ -1,7 +1,7 @@
 setInterval(function () {
 
     $.ajax({
-        url: "./status.php?ajax=true",
+        url: "status.php?ajax=true",
         data: "data",
         async: "false",
         dataType:"json",

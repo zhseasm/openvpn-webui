@@ -3,6 +3,8 @@ include './checkPermission.php';
 /*include './login.php';*/
 /*session_start();*/
 ////先执行一次，后续再用text更改内容//
+///
+//include './status.php'
 ?>
 
 <?php

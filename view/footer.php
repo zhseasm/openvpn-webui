@@ -12,6 +12,7 @@ echo "<span id='time'></span>";
           {
               echo "当前用户:";
               echo $_SESSION['username'];
+              echo "<a href=\"./changadminpasswd.php\" class='badge badge-success badge-sm'>更改密码</a>";
 echo "<a class='badge badge-info badge-sm' href='./logout.php'>退出登录</a>";
           }
               else

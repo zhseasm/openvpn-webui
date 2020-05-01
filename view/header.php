@@ -2,7 +2,7 @@
 /*session_start();
 $sessionid=session_id();*/
 /*echo $sessionid;*/
-
+//include './status.php'
 ?>
 <!DOCTYPE html>
 <html lang="utf-8">

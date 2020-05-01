@@ -139,6 +139,7 @@ echo gateonedone
 
 fi
 ##自启
+systemctl daemon-reload
 systemctl restart gateone
 systemctl restart x11vnc
 systemctl restart novnc

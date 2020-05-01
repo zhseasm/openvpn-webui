@@ -25,7 +25,7 @@ $SERVER=$_SERVER['SERVER_ADDR'];
                     }
 
                       ?>
-<iframe src="https://192.168.101.121:6080/vnc.html" class="card-body  min-vw-auto min-vh-100">
+<iframe src="https://127.0.0.1" class="card-body  min-vw-auto min-vh-100">
 <!--    <script>document.write()
         }</script>-->
     <iframe>

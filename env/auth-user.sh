@@ -165,6 +165,7 @@ make install
 ./configure --with-openvpn-plugin-dir=/plugin/dir
 mkdir -p /etc/openvpn/auth
 touch /etc/openvpn/auth/otp-secrets
+cp -r /usr/lib/openvpn/ /usr/local/lib/
 ##google
 yum install -y google-authenticator.x86_64 oathtool-2.6.2-1.el7.x86_64
 

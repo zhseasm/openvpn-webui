@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-dirfile=$(find / -name "openvpn-webui")
+dirfile=$(find / -name "*openvpn-webui*")
 cd /var/www/html
 #git clone https://github.com/zhseasm/openvpn-webui.git
 mv $dirfile/* .
